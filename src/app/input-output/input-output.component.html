@@ -1,0 +1,17 @@
+<a style="background-color: greenyellow;" href="/">back</a>
+
+<app-receive-input [item]="currentItem"></app-receive-input>
+<br>
+gửi từ con sang cha ( send-output --> input-ouput)
+<br>
+<app-send-output (newItemEvent)="addItem($event)"></app-send-output>
+<br>
+sản phẩm của items:
+<br>
+@for (item of items; track $index) {
+    {{$index}} . {{item}} <br>
+}
+<br>
+data == {{data}}
+<br>
+<button type="button" (click)="processData()">Viết Hoa và lưu</button>

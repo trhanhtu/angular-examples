@@ -1,0 +1,78 @@
+<a style="background-color: greenyellow;" href="/">back</a>
+
+<p>directive-control-flow works!</p>
+<span *ngIf="canShow; else hideTpl">I'm here</span>
+<br>
+<button type="button" (click)="canShow=!canShow">Bât tắt</button>
+<ng-template #hideTpl>
+    <span>-------</span>
+</ng-template>
+<br>
+
+sử dụng &#64;if
+<!-- thay thế cho ở trên là control flow -->
+<br>
+
+@if (canShow) {
+    <span> i'm hereeeeeeeeee</span>
+}
+@else {
+    <span style="background-color: rosybrown;">----------</span>
+}
+
+<br>
+list page:
+<ul>
+    <li *ngFor="let page of listPage;
+                let i = index;
+                let isFirst = first;
+                let isLast = last">
+        chương {{i+1}}. {{page}}
+        {{isFirst ? '----(bắt đầu)' : ''}}
+        {{isLast ? '-----(kết thúc)' : ''}}        
+    </li>
+</ul>
+
+<br>
+list page2 dùng &#64;for:
+<ul>
+    @for(page of listPage; track page;
+    let i = $index;
+    let isFirst = $first;
+    let isLast = $last){
+        <li>
+            chương {{i+1}}. {{page}}
+            {{isFirst ? '----(bắt đầu)' : ''}}
+            {{isLast ? '-----(kết thúc)' : ''}}        
+        </li>
+    }
+</ul>
+<br>
+dùng &#64;switch case:
+<br>
+<input type="string" [(ngModel)]="inputvaluetypescript" placeholder="enter a /b/c or something">
+<br>
+@switch (inputvaluetypescript) {
+    @case ('a') { <span>case A</span>}
+    @case ('b') { <span>case B</span>}
+    @case ('c') { <span>case C</span>}
+    @default { <span> case {{inputvaluetypescript}} is not handle yet</span>}
+}
+
+<br>
+ngTemplateOutlet
+<br>
+
+<!-- thứ xuất hiện trên màn hình nhưng chỉ là ngăn chứa (placeholder)-->
+ <ng-container *ngTemplateOutlet="placeHolder1"></ng-container>
+<br>
+<ng-container *ngTemplateOutlet="placeHolder2; context: myplaceHolderContext"></ng-container>
+<br>
+<ng-container *ngTemplateOutlet="placeHolder3; context: myplaceHolderContext"></ng-container>
+<br>
+
+<!-- nội dung điền vào placeholder -->
+ <ng-template #placeHolder1>Xin chào</ng-template>
+ <ng-template #placeHolder2 let-namegido>Xin chào "{{namegido}}" (tạo 1 biến namgido với giá trị rỗng)</ng-template>
+ <ng-template #placeHolder3 let-persongido="localVie">Chào "{{persongido}}" (lấy từ myplaceHolderContext.localVie)</ng-template>
+

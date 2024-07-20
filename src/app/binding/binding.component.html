@@ -1,0 +1,26 @@
+<a style="background-color: greenyellow;" href="/">back</a>
+<p>binding works!</p>
+<br>
+<app-name [firstName]="'Angular'"></app-name>
+<br>
+<app-name [firstName]="parentMessage"></app-name>
+<br>
+<img src="https://media.licdn.com/dms/image/D560BAQE96KctT7x-iw/company-logo_200_200/0/1666170056423?e=2147483647&v=beta&t=VWwOyGELKPqLpkj7dbxaCDtWbhWKvp3akvhvMdHivy4">
+<br>
+<app-name [attr.last-name]="'hả'"></app-name>
+<br>
+<span [ngStyle]="{color:'blue'}">ng style (import trong file ts)</span>
+<br>
+<span [ngClass]="'example-class'">ng class (import trong file ts)</span>
+<br>
+<button type="button" (wheel)="handleWheelInBinding_ts($event)">lăn chuột ->thông báo</button>
+<br>
+gán giá trị của input = giá trị của age (khi input đổi / age không đổi. khi age đổi -> input cập nhật)
+<button type="button" (click)="increaseAge()">tăng tuổi</button>
+<br>
+<input type="number" [ngModel] = "age">
+<br>
+two way binding
+<input type="number" [(ngModel)] = "age2">
+<br>
+you enter age = {{age2}}
