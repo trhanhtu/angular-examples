@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ReceiveInputComponent } from '../receive-input/receive-input.component';
 import { SendOutputComponent } from "../send-output/send-output.component";
 
@@ -13,13 +13,14 @@ import { SendOutputComponent } from "../send-output/send-output.component";
 })
 export class InputOutputComponent {
   processData() {
-
+    this.returnData.emit(this.data.toUpperCase());
   }
 
   addItem(otherItem: string) {
     this.items.push(otherItem);
   }
-  data: string="";
+  @Input() data: string="";
+  @Output() returnData = new EventEmitter<string>();
   currentItem: string = "television";
   items: string[] = ["television", "smart phone", "cocacola"];
 }
